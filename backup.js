@@ -1,10 +1,6 @@
-// Menampilkan Output
-console.log('Hello, World')
-
-alert('hallo')
-
 let nama = "Burhan" // Tipe data string
 const umur = 20 // Tipe data 
 
-console.log(nama)
-console.log(umur)
+console.log("Nama Saya: " + nama, "Umur Saya: " + umur)
+let hasil = `Nama Saya:  ${nama} Umur Saya : ${umur}`
+console.log(hasil)
