@@ -1,0 +1,32 @@
+/* warna & font */
+
+h1 {
+    background-color: blue;
+    color: yellow;
+    font-size: 50px;
+    font-family: 'Courier New', Courier, monospace;
+    font-weight: bold;
+    text-align: center;
+    padding: 20px;
+    margin: 50px;
+}
+
+h1:hover {
+    background-color: black;
+}
+
+button {
+    padding: 20px;
+    margin: 10px;
+    border: none;
+    width: 200px;
+}
+
+p {
+    font-weight: bold;
+    font-size:50px;
+}
+
+img {
+    padding: 10px;
+}
