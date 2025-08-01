@@ -1,8 +1,5 @@
-// PROGRAM PENILAIAN SISWA DENGAN INPUT TERMINAL
-
 const readline = require('readline');
 
-// Membuat interface untuk input/output
 const rl = readline.createInterface({
     input: process.stdin,
     output: process.stdout
@@ -53,26 +50,22 @@ function programPenilaian() {
     console.log("    PROGRAM PENILAIAN SISWA");
     console.log("===============================");
     
-    // Input nama siswa
     rl.question("Masukkan nama siswa: ", (nama) => {
         
-        // Input nilai siswa
         rl.question("Masukkan nilai (0-100): ", (inputNilai) => {
             let nilai = parseInt(inputNilai);
             
-            // Validasi input dengan conditional
             if (isNaN(nilai) || nilai < 0 || nilai > 100) {
-                console.log("❌ Error: Nilai harus berupa angka antara 0-100!");
+                console.log("Error: Nilai harus berupa angka antara 0-100!");
                 rl.close();
                 return;
             }
+
             
-            // Proses penilaian menggunakan function
             let grade = tentukanGrade(nilai);
             let status = tentukanStatus(nilai);
             let keterangan = tentukanKeterangan(grade);
             
-            // Tampilkan hasil
             console.log("\n===============================");
             console.log("       HASIL PENILAIAN");
             console.log("===============================");
@@ -83,20 +76,18 @@ function programPenilaian() {
             console.log("Status     : " + status);
             console.log("===============================");
             
-            // Pesan motivasi dengan conditional
             if (status === "LULUS") {
-                console.log("🎉 Selamat! Anda berhasil lulus!");
+                console.log("Selamat! Anda berhasil lulus!");
             } else {
-                console.log("💪 Jangan menyerah! Belajar lebih giat lagi!");
+                console.log("Jangan menyerah! Belajar lebih giat lagi!");
             }
             
-            // Tanya apakah ingin input lagi
             rl.question("\nIngin menilai siswa lain? (y/n): ", (jawaban) => {
                 if (jawaban.toLowerCase() === 'y' || jawaban.toLowerCase() === 'yes') {
-                    console.log(); // baris kosong
-                    programPenilaian(); // panggil function lagi (rekursi)
+                    console.log();
+                    programPenilaian();
                 } else {
-                    console.log("\nTerima kasih telah menggunakan program ini! 👋");
+                    console.log("\nTerima kasih telah menggunakan program ini!");
                     rl.close();
                 }
             });
@@ -115,7 +106,6 @@ function tampilkanRingkasan(hasil) {
     let jumlahLulus = 0;
     let totalNilai = 0;
     
-    // Loop untuk hitung statistik
     for (let i = 0; i < hasil.length; i++) {
         let siswa = hasil[i];
         console.log(`${i+1}. ${siswa.nama.padEnd(15)} - ${siswa.nilai.toString().padStart(3)} - ${siswa.grade} - ${siswa.status}`);
@@ -136,7 +126,6 @@ function tampilkanRingkasan(hasil) {
     console.log("Rata-rata Kelas  : " + rataRata.toFixed(2));
     console.log("Persentase Lulus : " + persentaseLulus.toFixed(2) + "%");
     
-    // Evaluasi kelas dengan nested conditional
     let evaluasi;
     if (persentaseLulus >= 80) {
         evaluasi = "SANGAT BAIK";
@@ -166,15 +155,14 @@ function menuUtama() {
         if (pilihan === "1") {
             programPenilaian();
         } else if (pilihan === "2") {
-            console.log("Terima kasih! Sampai jumpa! 👋");
+            console.log("Terima kasih! Sampai jumpa!");
             rl.close();
         } else {
-            console.log("❌ Pilihan tidak valid! Silakan pilih 1-2.");
+            console.log("Pilihan tidak valid! Silakan pilih 1-2.");
             console.log();
-            menuUtama(); // kembali ke menu
+            menuUtama();
         }
     });
 }
 
-// JALANKAN PROGRAM
 menuUtama();
