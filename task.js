@@ -14,3 +14,5 @@ if (nilai >= 90) {
 }
 
 console.log(`Nilai: ${nilai}, Grade: ${grade}`);
+
+
